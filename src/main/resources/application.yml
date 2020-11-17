@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: fire_log
+  banner:
+    location: fire_logo.txt
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql官方驱动修改 驱动包类、rul用法修改、注意url中时区的问题
+    url: jdbc:mysql://mysql1.dev.weibopay.com:3306/loanreport?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: loanreportuser
+    password: 53letExkj6BYF1
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-idle: 10
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+elasticsearch:
+  nodes: 10.65.213.34:9200  #多机使用 逗号隔开
+dubbo:
+  application:
+    name: fire-dubbo
+    owner: lys
+    organization: sina
+  registry:
+    address: zookeeper://10.65.209.152:2181?backup=10.65.209.153:2181,10.65.209.154:2181
+    # 更改zookeeper地址  ?backup=10.65.209.153:2181,10.65.209.154:2181
+    protocol: zookeeper
+    check: false
+  protocol:
+    name: dubbo
+    port: 20850
+    accesslog: dubbo-access.log
+    buffer: 102400
+  monitor:
+    protocol: register
+  consumer:
+    check: false
+    timeout: 3000
+  scan:
+    base-packages: com.fire.es.service
+swagger:
+  enabled: true
+  basePackage: com.fire.es.controller
+  title: es_swagger

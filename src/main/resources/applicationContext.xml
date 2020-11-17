@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                            http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+                            http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <dubbo:application name="${dubbo.application.name}"
+                       owner="${dubbo.application.owner}"
+                       organization="${dubbo.application.organization}"/>
+    <dubbo:registry address="${dubbo.registry.address}"
+                    check="false" protocol="${dubbo.registry.protocol}"
+                    timeout="${dubbo.registry.timeout:15000}"/>
+    <dubbo:protocol name="dubbo"
+                    buffer="${dubbo.protocol.buffer}"
+                    port="${dubbo.protocol.port}"
+                    accesslog="${dubbo.protocol.accesslog}"/>
+    <dubbo:monitor protocol="${dubbo.monitor.protocol}" />
+    <dubbo:consumer check="false" timeout="${dubbo.consumer.timeout:15000}"/>
+
+
+
+    <bean id="fireItemFacadeImpl" class="com.fire.es.facade.impl.FireItemFacadeImpl"/>
+    <!-- 注册消费者 -->
+    <jaxws:endpoint id="fireItemFacade" implementor="#fireItemFacadeImpl" address="/fireItemFacade"/>
+    <dubbo:service interface="com.fire.es.facade.FireItemFacade"  ref="fireItemFacadeImpl" protocol="dubbo" />
+
+    <!-- 注册提供者 -->
+<!--    <dubbo:reference id="sendingDataFacade" interface="com.test.TestFacade" timeout="28000"
+                     protocol="dubbo" check="false"/>-->
+
+</beans>
