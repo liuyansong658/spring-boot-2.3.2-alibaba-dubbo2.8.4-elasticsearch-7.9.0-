@@ -62,6 +62,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author liuyansong
+ * @date 2020/11/01
+ */
 @Slf4j
 @Repository
 public class ElasticSearchRepository {

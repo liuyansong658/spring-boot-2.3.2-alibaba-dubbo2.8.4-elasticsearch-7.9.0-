@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+/**
+ * @author liuyansong
+ * @date 2020/11/01
+ */
 public class FireItemMapper implements RowMapper<FireItem> {
     @Override
     public FireItem mapRow(ResultSet rs, int rowNum) throws SQLException {

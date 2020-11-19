@@ -8,6 +8,10 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author liuyansong
+ * @date 2020/11/01
+ */
 public class FireConfigMapper implements RowMapper<FireConfig> {
 
     @Override

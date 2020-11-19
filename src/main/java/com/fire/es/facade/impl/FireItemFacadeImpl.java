@@ -8,6 +8,10 @@ import com.fire.es.service.FireItemService;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 
+/**
+ * @author liuyansong
+ * @date 2020/11/01
+ */
 @WebService(targetNamespace = "com.fire.es.facade",endpointInterface = "com.fire.es.facade.FireItemFacade")
 public class FireItemFacadeImpl implements FireItemFacade {
 

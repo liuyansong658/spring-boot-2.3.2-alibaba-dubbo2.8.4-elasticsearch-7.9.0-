@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author liuyansong
+ * @date 2020/11/01
+ */
 @Repository
 public class FireConfigDaoImpl implements FireConfigDao {
 
