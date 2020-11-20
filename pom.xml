@@ -26,7 +26,11 @@
         <cxf.version>3.3.7</cxf.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
         <!-- 新增 alibaba dubbo 依赖 start-->
         <dependency>
             <groupId>com.alibaba</groupId>
