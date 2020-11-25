@@ -2,6 +2,8 @@ package com.fire.es.test;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
+
 public class MainTest {
 
     static final String SP_1 = "*";
@@ -14,6 +16,15 @@ public class MainTest {
         getStr(name);
         name = "欧阳王五";
         getStr(name);
+
+
+        Date date = new Date();
+        for (int i = 0; i < 10000; i++) {
+            name = name+i;
+            hide(name,1,1);
+        }
+        System.out.println(new Date().getTime() - date.getTime());
+
 
         String id1 = "412727281638469";
         System.out.println(leftHide(id1,4));
