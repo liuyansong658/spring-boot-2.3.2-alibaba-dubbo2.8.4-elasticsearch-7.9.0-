@@ -278,6 +278,33 @@
         <!-- dbcp2数据库连接池 end-->
     </dependencies>
 
+    <profiles>
+        <!--开发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--测试环境 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+        <!--生产环境 -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profileActive>prod</profileActive>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -289,6 +316,22 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application*.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>      <!-- 根据打包时激活的profile来包括对应的配置文件 -->
+                    <include>application.properties</include>
+                    <include>application-${profileActive}.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 </project>
